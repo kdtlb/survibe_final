@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conociendo Bolivia — survibe</title>
+  <meta name="description" content="Catálogo de recorridos Conociendo Bolivia: rutas, caminatas y experiencias guiadas en Bolivia." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="brand">survibe<span class="brand-dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="expediciones.html" class="active">Recorridos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <a href="contacto.html" class="nav-cta">Reservar
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="nav-toggle" aria-label="Menú"><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO catálogo -->
+  <header class="catalog-hero">
+    <div class="container">
+      <p class="eyebrow fade-up" data-count>Recorridos · Conociendo Bolivia</p>
+      <h1 class="fade-up delay-1" style="margin-top:1.2rem;">
+        Conociendo<br/>
+        <span class="it">Bolivia</span>.
+      </h1>
+      <p class="fade-up delay-2">
+        Descubre nuestros recorridos y encuentra la aventura perfecta para ti.
+      </p>
+
+      <div class="filters fade-up delay-3">
+        <button class="filter-pill is-active" data-filter="conociendo-tarija">Conociendo Tarija</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LISTA (se genera dinámicamente desde expediciones-data.js) -->
+  <section>
+    <div class="container catalog-list" data-catalogo></div>
+  </section>
+
+  <!-- BIG CTA -->
+  <section class="big-cta">
+    <div class="big-cta-inner reveal">
+      <p class="eyebrow" style="color: var(--clay-2); justify-content:center;">Personalizadas</p>
+      <h2>¿Quieres personalizar una salida?</h2>
+      <p>Podés usar estos seis recorridos como base y ajustar textos, imágenes, precio, dificultad o itinerario desde el archivo de datos.</p>
+      <a href="contacto.html" class="btn btn-light">Solicitar recorrido
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-mark">survibe<span class="dot">.</span></div>
+        <p class="footer-tag">Expediciones exclusivas en Bolivia . Conectando el espíritu aventurero con la naturaleza en su estado más puro.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="expediciones.html">Recorridos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="index.html">Inicio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Información</h4>
+        <ul>
+          <li><a href="contacto.html#preguntas">Preguntas frecuentes</a></li>
+
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a>ernestovacap@gmail.com</a></li>
+          <li><a>+591 76194200</a></li>
+          <li><a>@survibebolivia</a></li>
+          <li><a>Bolivia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Survibe</span>
+      <span>Diseñado por <a href="https://progredi.lopezbertram.workers.dev/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: inherit;">ProgredI</a></span>
+    </div>
+  </footer>
+
+  <script src="expediciones-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expedición — survibe</title>
+  <meta name="description" content="Detalle del recorrido." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Tooltips Leaflet personalizados */
+    .leaflet-tip-custom {
+      background: rgba(14, 20, 16, 0.92);
+      color: #f1ead8;
+      border: 0;
+      border-radius: 4px;
+      font-family: "Geist Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 9px;
+      box-shadow: none;
+    }
+    .leaflet-tip-custom::before { display: none; }
+  </style>
+</head>
+<body data-exp-root hidden>
+
+  <nav class="nav is-dark">
+    <a href="index.html" class="brand">survibe<span class="brand-dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="expediciones.html" class="active">Recorridos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <a href="contacto.html" class="nav-cta">Reservar
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="nav-toggle" aria-label="Menú"><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO de la expedición -->
+  <header class="exp-hero">
+    <div data-hero-img></div>
+
+    <div class="exp-hero-inner">
+      <p class="exp-hero-tag fade-up" data-hero-tag></p>
+      <h1 class="fade-up delay-1" data-hero-title></h1>
+      <p class="fade-up delay-2" data-hero-sub style="max-width: 50ch; margin-top: 1.5rem; opacity:.9; font-size: 1.05rem;"></p>
+
+      <div class="stat-strip fade-up delay-3">
+        <div>
+          <div class="num"><span data-stat-dist></span> <span style="font-size: .9rem; opacity:.6;">km</span></div>
+          <div class="label">Distancia</div>
+        </div>
+        <div>
+          <div class="num"><span data-stat-alt></span> <span style="font-size: .9rem; opacity:.6;">m</span></div>
+          <div class="label">Altitud máx.</div>
+        </div>
+        <div>
+          <div class="num"><span data-stat-dur></span> <span style="font-size: .9rem; opacity:.6;">día</span></div>
+          <div class="label">Duración</div>
+        </div>
+        <div>
+          <div class="num" data-stat-diff></div>
+          <div class="label">Dificultad</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- DESCRIPCIÓN DEL RECORRIDO -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="reveal" style="text-align:center; margin-bottom: 4rem;">
+        <p class="eyebrow" style="justify-content:center;">Descripción del recorrido</p>
+        <h2 style="margin-top: 1rem;">Descripción del<br/><span class="italic-display" style="font-style:italic;">recorrido.</span></h2>
+        <p class="lede" style="margin: 1.5rem auto 0; color: var(--ink-soft);">
+          Una lectura general del trayecto, sus puntos principales y la experiencia que ofrece cada ruta.
+        </p>
+      </div>
+
+      <div class="route-description-card reveal" data-recorrido-descripcion></div>
+    </div>
+  </section>
+
+  <!-- PERFIL DE ALTITUD (se oculta si no hay chart) -->
+  <section class="section bg-moss">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">02 · Perfil</p>
+        </div>
+        <div>
+          <h2>Perfil<br/><span class="italic-display" style="font-style:italic;">de altitud.</span></h2>
+          <p class="lede" style="margin-top:1rem;">Análisis del esfuerzo a lo largo del recorrido. La curva muestra dónde el cuerpo trabaja más y dónde puede soltar.</p>
+        </div>
+      </div>
+
+      <div class="chart-card reveal">
+        <canvas id="elevationChart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANÁLISIS + MAPA -->
+  <section class="section bg-ink">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">03 · Análisis</p>
+        </div>
+        <div>
+          <h2>Datos<br/><span class="italic-display" style="font-style:italic;">del recorrido.</span></h2>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start;" class="exp-detail-grid">
+        <div class="reveal">
+          <div class="specs" data-specs></div>
+
+          <div style="margin-top: 2.5rem; display:flex; gap:.8rem; flex-wrap:wrap;">
+            <a href="contacto.html" class="btn btn-light">Reservar lugar
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="map-card reveal" id="map"></div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 860px) {
+      .exp-detail-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+    }
+  </style>
+
+  <!-- INCLUYE (se oculta si no hay datos en ninguna columna) -->
+  <section class="section" data-seccion-incluye>
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">04 · Qué incluye</p>
+        </div>
+        <div>
+          <h2>Lo que va<br/>en la mochila.</h2>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;" class="includes-grid">
+        <div class="reveal" data-grupo-incluye style="border-top: 1px solid var(--ink-line); padding-top:1.5rem;">
+          <div style="font-family: var(--font-mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color: var(--clay); margin-bottom:.8rem;">Incluido</div>
+          <ul data-incluye style="list-style:none; padding:0; margin:0; display:grid; gap:.8rem; font-size:.95rem;"></ul>
+        </div>
+        <div class="reveal" data-grupo-incluye style="border-top: 1px solid var(--ink-line); padding-top:1.5rem;">
+          <div style="font-family: var(--font-mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color: var(--clay); margin-bottom:.8rem;">Lo que llevás vos</div>
+          <ul data-llevas style="list-style:none; padding:0; margin:0; display:grid; gap:.8rem; font-size:.95rem;"></ul>
+        </div>
+        <div class="reveal" data-grupo-incluye style="border-top: 1px solid var(--ink-line); padding-top:1.5rem;">
+          <div style="font-family: var(--font-mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color: var(--clay); margin-bottom:.8rem;">Para tener en cuenta</div>
+          <ul data-tener style="list-style:none; padding:0; margin:0; display:grid; gap:.8rem; font-size:.95rem;"></ul>
+        </div>
+      </div>
+
+      <style>
+        @media (max-width: 760px) { .includes-grid { grid-template-columns: 1fr !important; } }
+      </style>
+    </div>
+  </section>
+
+  <!-- GALERÍA (se oculta si la expedición no tiene galería) -->
+  <section class="section-tight" style="background: var(--sand-2);">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom: 3rem;">
+        <div>
+          <p class="eyebrow">05 · Vistazo</p>
+        </div>
+        <div>
+          <h2>Vistazo al<br/><span class="italic-display" style="font-style:italic;">recorrido.</span></h2>
+          <p class="lede" style="margin-top:1rem;">Algunos momentos capturados en los senderos.</p>
+        </div>
+      </div>
+
+      <div class="gallery-3" data-galeria></div>
+    </div>
+  </section>
+
+  <!-- OTRAS EXPEDICIONES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">Seguir explorando</p></div>
+        <div>
+          <h2>Otros<br/><span class="italic-display" style="font-style:italic;">recorridos.</span></h2>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;" class="related-grid" data-relacionadas></div>
+
+      <style>
+        @media (max-width: 760px) { .related-grid { grid-template-columns: 1fr !important; } }
+      </style>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-mark">survibe<span class="dot">.</span></div>
+        <p class="footer-tag">Expediciones exclusivas en Bolivia. Conectando el espíritu aventurero con la naturaleza en su estado más puro.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="expediciones.html">Recorridos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="index.html">Inicio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Información</h4>
+        <ul>
+          <li><a href="contacto.html#preguntas">Preguntas frecuentes</a></li>
+
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a>ernestovacap@gmail.com</a></li>
+          <li><a>+591 76194200</a></li>
+          <li><a>@survibebolivia</a></li>
+          <li><a>Bolivia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Survibe</span>
+      <span>Diseñado por <a href="https://progredi.lopezbertram.workers.dev/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: inherit;">ProgredI</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="expediciones-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

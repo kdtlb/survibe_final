@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>survibe — Conociendo Bolivia</title>
+  <meta name="description" content="Recorridos guiados de la categoría Conociendo Tarija: seis rutas editables con mapas, perfiles de altura e imágenes de ejemplo." />
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============== NAV ============== -->
+  <nav class="nav is-dark">
+    <a href="index.html" class="brand">survibe<span class="brand-dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="expediciones.html">Recorridos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <a href="contacto.html" class="nav-cta">Reservar
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="nav-toggle" aria-label="Menú"><span></span><span></span></button>
+  </nav>
+
+  <!-- ============== HERO ============== -->
+  <header class="hero">
+    <div class="hero-bg">
+      <img class="zoom-slow"
+           src="https://res.cloudinary.com/dg0zmc7zy/image/upload/v1778202531/portada_yfgkse.jpg"
+           alt="Cordillera al amanecer" />
+    </div>
+
+    <div class="hero-inner">
+      <div>
+        <p class="hero-tag fade-up"><span class="pulse"></span> Temporada abierta</p>
+        <h1 class="fade-up delay-1">
+          Siente,<br/>
+          <span class="it">vibra,</span><br/>
+          regresa.
+        </h1>
+        <p class="fade-up delay-2" style="max-width: 38ch; opacity:.85; margin-top:1.5rem;">
+          Vive Bolivia desde adentro. Rutas que desafían el cuerpo y te recompensan con el silencio de la cumbre
+        </p>
+
+        <div class="fade-up delay-3" style="margin-top:2rem; display:flex; gap:.8rem; flex-wrap:wrap;">
+          <a href="expediciones.html" class="btn btn-light">Ver recorridos
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="nosotros.html" class="btn" style="color:var(--sand); border:1px solid rgba(241,234,216,.4);">Conocer la tribu</a>
+        </div>
+      </div>
+
+      <div class="hero-meta fade-up delay-4">
+        <div>
+          <span class="num">21°S 65°W</span>
+        </div>
+        <div>Bolivia · Bolivia</div>
+        <div>Conociendo Bolivia</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats">
+      <div class="fade-up delay-2">
+        <div class="num">6</div>
+        <div class="label">Recorridos</div>
+      </div>
+      <div class="fade-up delay-3">
+        <div class="num">1</div>
+        <div class="label">Categoría</div>
+      </div>
+      <div class="fade-up delay-3">
+        <div class="num">100%</div>
+        <div class="label">Bolivia</div>
+      </div>
+      <div class="fade-up delay-4">
+        <div class="num">100%</div>
+        <div class="label">Guías locales</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============== MARQUEE ============== -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span class="marquee-item">Camino del Inca <span class="star">✦</span></span>
+      <span class="marquee-item italic-display"><em>Cascada de Pinos</em> <span class="star">✦</span></span>
+      <span class="marquee-item">Cochas a Trancas <span class="star">✦</span></span>
+      <span class="marquee-item italic-display"><em>El Morao</em> <span class="star">✦</span></span>
+      <span class="marquee-item">Lazareto a la Victoria <span class="star">✦</span></span>
+      <span class="marquee-item italic-display"><em>Laguna Brava</em> <span class="star">✦</span></span>
+      <!-- duplicado para loop -->
+      <span class="marquee-item">Camino del Inca <span class="star">✦</span></span>
+      <span class="marquee-item italic-display"><em>Cascada de Pinos</em> <span class="star">✦</span></span>
+      <span class="marquee-item">Cochas a Trancas <span class="star">✦</span></span>
+      <span class="marquee-item italic-display"><em>El Morao</em> <span class="star">✦</span></span>
+      <span class="marquee-item">Lazareto a la Victoria <span class="star">✦</span></span>
+      <span class="marquee-item italic-display"><em>Laguna Brava</em> <span class="star">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ============== INTRO ============== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Manifiesto</p>
+        </div>
+        <div>
+          <h2>Caminamos despacio<br/><span class="italic-display">para llegar lejos.</span></h2>
+          <p class="lede" style="margin-top:1.5rem;">
+            Cada montaña tiene su propio lenguaje y cada ruta, su propio tiempo. Explora nuestra selección de senderos en Bolivia, pensados para conectar profundamente con la naturaleza en su estado más puro.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pilares -->
+    <div class="pillars reveal">
+      <div class="pillar">
+        <span class="pillar-num">01 — Aventura</span>
+        <h3>Subir,<br/>cruzar,<br/>respirar.</h3>
+        <p>Rutas que exigen sin destruir. Cumbres modestas, valles enormes y la conciencia de cada paso.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">02 — Diversión</span>
+        <h3>Sin solemnidad.</h3>
+        <p>La montaña es seria, nosotros no tanto. Buena comida, buenas conversaciones.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">03 — Paz</span>
+        <h3>El silencio<br/>como destino.</h3>
+        <p>Grupos pequeños. Tecnología guardada. Un ritmo que el cuerpo agradece y la cabeza también.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== EXPEDICIONES DESTACADAS ============== -->
+  <section class="section bg-moss">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Recorridos</p>
+          <h2 style="margin-top:.6rem;">Donde<br/>te llevamos.</h2>
+        </div>
+        <div>
+          <p class="lede">
+            Una colección de rutas cuidadosamente trazadas para que descubras la grandeza de nuestra tierra. Paisajes abiertos, cumbres silenciosas y senderos que desafían el espíritu.
+          </p>
+          </p>
+          <a href="expediciones.html" class="btn btn-light" style="margin-top:1.6rem;">Ver los recorridos
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tarjetas destacadas: se generan desde expediciones-data.js
+           (aparecen aquí todas las expediciones con destacado:true) -->
+      <div class="expedition-grid" data-destacadas></div>
+    </div>
+  </section>
+
+  <!-- ============== TESTIMONIO ============== -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="reveal" style="text-align:center;">
+        <p class="eyebrow" style="justify-content:center;">Bitácora</p>
+        <h2 class="italic-display" style="font-style:italic; font-size: clamp(2rem, 5vw, 3.6rem); line-height:1.15; margin-top:1.5rem; max-width: 22ch; margin-inline:auto;">
+          "La verdad, la subida me costó bastante, pero cuando llegas allá arriba y ves el paisaje sin escuchar un solo ruido de la ciudad... te reinicia la cabeza por completo. Volvería sin dudarlo."
+        </h2>
+        <div style="margin-top:2.5rem; font-family: var(--font-mono); font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);">
+          Camila R. · Buenos Aires · El Morao
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== GALERÍA ============== -->
+
+  <!-- ============== BIG CTA ============== -->
+  <section class="big-cta">
+    <div class="big-cta-inner reveal">
+      <p class="eyebrow" style="color: var(--clay-2); justify-content:center;">¿Vamos?</p>
+      <h2>El próximo paso<br/>siempre es el primero.</h2>
+      <p>Elige tu próxima ruta, prepara tu equipo y acompáñanos a descubrir la inmensidad de nuestras montañas. La cumbre te espera.</p>
+      <a href="contacto.html" class="btn btn-light">Empezar conversación
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-mark">survibe<span class="dot">.</span></div>
+        <p class="footer-tag">Expediciones exclusivas en Bolivia. Conectando el espíritu aventurero con la naturaleza en su estado más puro.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="expediciones.html">Recorridos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="index.html">Inicio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Información</h4>
+        <ul>
+          <li><a href="contacto.html#preguntas">Preguntas frecuentes</a></li>
+
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a>ernestovacap@gmail.com</a></li>
+          <li><a>+591 76194200</a></li>
+          <li><a>@survibebolivia</a></li>
+          <li><a>Bolivia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Survibe</span>
+      <span>Diseñado por <a href="https://progredi.lopezbertram.workers.dev/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: inherit;">ProgredI</a></span>
+    </div>
+  </footer>
+
+  <script src="expediciones-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
